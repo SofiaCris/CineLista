@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> CineLista </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <style>
+            body {
+                background-color: #dde8f3; /* Um cinza claro para o fundo */
+                font-family: Arial, sans-serif; /* Fonte mais legível */
+            }
+
+            li{
+                margin-left: 47%;
+            }
+
+            form{
+                text-align: center;
+            }
+            
+            h1, h2, hr{
+                text-align: center;
+                color: #1a1a1a;
+            }
+
+            .card {
+                background-color: #e9ecef;
+                border: 1px solid #007bff; 
+                border-radius: 5px; 
+                padding: 10px; 
+                max-width: 300px; 
+                margin: 10px;
+            }
+
+            .card:hover {
+                transform: scale(1.05); 
+            }
+
+            a.btn {
+                background-color: #007bff; 
+                color: white; 
+            }
+
+            a.btn:hover {
+                background-color: #0056b3; 
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Filmes</h1>
+        <ul>
+            {% for filme in filmes %}
+                <li>{{ filme.nome }}</li>
+            {% endfor %}
+        </ul>
+        <form action="/" method="post">
+            <input type="text" name="nome" placeholder="Nome do filme" required>
+            <br>
+            <br>
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <hr>
+
+        <h2>Atualizar nome do filme:</h2>
+        <form action="/alterar" method="post">
+            <input type="text" name="nomeAntigo" placeholder="Nome atual do filme" required>
+            <br>
+            <br>
+            <input type="text" name="nomeNovo" placeholder="Nome corrigido" required>
+            <br>
+            <br>
+            <input type="submit" value="Alterar">
+        </form>
+        <hr>
+
+        <h2>Apagar filme:</h2>
+        <form action="/apagar" method="post">
+            <input type="text" name="nome" placeholder="Nome do filme" required>
+            <br>
+            <br>
+            <input type="submit" value="Apagar">
+        </form>
+
+        <div class="container">
+            <div class="row">
+                {% for filme in filmes %}
+                    <div class="col-md-4"> 
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ filme.nome }}</h5>
+                                <p class="card-text">Aperte no botão abaixo para ter mais informações sobre o filme</p>
+                                <a href="{{ url_for('informacoes', nome=filme.nome) }}" class="btn btn-primary">Saiba Mais</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

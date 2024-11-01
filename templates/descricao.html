@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            body {
+                background-color: #dde8f3; /* Um cinza claro para o fundo */
+                font-family: Arial, sans-serif; /* Fonte mais legível */
+                text-align: center;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <h1>Adicionar Detalhes para "{{ nome }}"</h1>
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="duracao" class="form-label">Duração</label>
+                    <input type="text" class="form-control" name="duracao" placeholder="Duração do filme">
+                </div>
+                <div class="mb-3">
+                    <label for="genero" class="form-label">Gênero</label>
+                    <input type="text" class="form-control" name="genero" placeholder="Gênero do filme">
+                </div>
+                <div class="mb-3">
+                    <label for="faixa_etaria" class="form-label">Faixa Etária</label>
+                    <input type="text" class="form-control" name="faixa_etaria" placeholder="Faixa etária">
+                </div>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <textarea class="form-control" name="descricao" placeholder="Descrição do filme"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="diretor" class="form-label">Diretor</label>
+                    <input type="text" class="form-control" name="diretor" placeholder="Diretor do filme">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Detalhes</button>
+            </form>
+            <a href="/" class="btn btn-secondary">Voltar à lista de filmes</a>
+        </div>
+    </body>
+</html>
